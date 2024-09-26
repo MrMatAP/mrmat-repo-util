@@ -40,8 +40,7 @@ namespaces = true
 [project.scripts]
 mrmat-repo-util = "mru.cli:main"
 
-# If you are debugging your tests using PyCharm then comment out the coverage options
-# in addopts
+# If you are debugging your tests using PyCharm then comment out the coverage options in addopts
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "--cov=src/mru --cov-report=term --cov-report=xml:build/coverage.xml --junit-xml=build/junit.xml"
