@@ -1,6 +1,8 @@
 # MrMat :: Repository Utility
 
-A utility tool to manage code repositories
+A utility tool to manage code repositories.
+
+[![Build](https://github.com/MrMatAP/mrmat-repo-util/actions/workflows/build.yml/badge.svg)](https://github.com/MrMatAP/mrmat-repo-util/actions/workflows/build.yml)
 
 ## How to install this
 
