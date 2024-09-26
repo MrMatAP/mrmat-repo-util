@@ -1,0 +1,4 @@
+# Runtime requirements
+
+pillow==10.4.0                      # HPND
+rich==13.8.1                        # MIT
