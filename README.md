@@ -76,7 +76,7 @@ The resulting images look like this:
 
 ### Interactively
 
-The generals sequence for building interactively is to install the necessary dependencies and build a wheel:
+The general sequence for building interactively is to install the necessary dependencies and build a wheel:
 
 ```shell
 $ pip install -r requirements.dev.txt
