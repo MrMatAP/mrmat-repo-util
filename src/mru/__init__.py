@@ -20,8 +20,25 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import importlib.metadata
+import pathlib
+
+import rich.console
+
 try:
   __version__ = importlib.metadata.version('mru')
 except importlib.metadata.PackageNotFoundError:
   # You have not yet installed this as a package, likely because you're hacking on it in some IDE
   __version__ = '0.0.0.dev0'
+console = rich.console.Console()
+palette = dict(
+  purple=dict(bg='#a8216b', fg='#ffffff'),
+  red=dict(bg='#f1184c', fg='#ffffff'),
+  orange=dict(bg='#f36943', fg='#262626'),
+  yellow=dict(bg='#f7dc66', fg='#262626'),
+  blue=dict(bg='#2e9599', fg='#121212')
+)
+DEFAULT_FONT_PATH = pathlib.Path('/System/Library/Fonts/HelveticaNeue.ttc')
+DEFAULT_FONT_FAMILY = "Helvetica"
+DEFAULT_DIRECTORY = pathlib.Path('~/build').expanduser()
+MAX_TITLE_LENGTH = 13
+MAX_HEADLINE_LENGTH = 4

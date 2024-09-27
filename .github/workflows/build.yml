@@ -73,6 +73,7 @@ jobs:
     - name: Test
       run: |
         pip install --user -r requirements.txt
+        PYTHONPATH=${GITHUB_WORKSPACE}/src python -m pytest
         python -m mypy --no-incremental --non-interactive --junit-xml ${GITHUB_WORKSPACE}/build/mypy.xml ${GITHUB_WORKSPACE}/src/mru || true
 
     - name: Upload test results
@@ -82,6 +83,8 @@ jobs:
         name: Test and Coverage
         path: |
           build/mypy.xml
+          build/junit.xml
+          build/coverage.xml
 
     - name: Conditional Release
       uses: marvinpinto/action-automatic-releases@v1.2.1
