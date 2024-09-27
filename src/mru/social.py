@@ -7,15 +7,21 @@ from mru import console, palette
 
 def social_github_icon(args: argparse.Namespace):
   colour = palette[args.colour]
+  if not args.font_path.exists():
+    font = ImageFont.load_default(100)
+  else:
+    font = ImageFont.truetype(args.font_path, 100)
   out = Image.new("RGB", (1280, 640), color=colour['bg'])
   d = ImageDraw.Draw(out)
   d.text((10, 10),
          args.title,
-         font=ImageFont.truetype(args.font_path, 100),
+         font=font,
+         font_size=100,
          fill=colour['fg'])
   d.text((1200, 500),
          args.headline,
-         font=ImageFont.truetype(args.font_path, 400),
+         font=font,
+         font_size=400,
          fill=colour['fg'],
          anchor='rb')
   args.directory.mkdir(exist_ok=True, parents=True)
