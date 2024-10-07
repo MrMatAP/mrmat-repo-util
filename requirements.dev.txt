@@ -1,7 +1,7 @@
 # Build-time requirements
 
 setuptools==74.1.2
-build==1.2.2                        # MIT
+build==1.2.2.post1                        # MIT
 wheel==0.44.0                       # MIT
 
 mypy==1.11.2                         # MIT
