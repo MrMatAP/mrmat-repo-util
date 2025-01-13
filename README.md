@@ -1,6 +1,6 @@
 # MrMat :: Repository Utility
 
-A utility tool to manage code repositories.
+A utility to manage code repositories.
 
 [![Build](https://github.com/MrMatAP/mrmat-repo-util/actions/workflows/build.yml/badge.svg)](https://github.com/MrMatAP/mrmat-repo-util/actions/workflows/build.yml)
 
@@ -16,29 +16,38 @@ $ pip install /path/to/downloaded/wheel
 
 ## How to use this
 
-This is a utility kit for managing repositories in GitHub and Gitlab and the Jetbrains suite of IDEs. At this time, it
-only has a single function, to generate the social media icons in GitHub and a custom project icon for Jetbrains.
+This is a utility for managing repositories in GitHub and Gitlab and the Jetbrains suite of IDEs. At this time, it
+only has two implemented functions, to generate the social media icons in GitHub and a custom project icon for the 
+Jetbrains suite of ideas. There's limited means to customise those icons for now, they're the way I like them to be.
 
 ### Getting help
 
 A simple command help system is provided.
 
 ```shell
- mrmat-repo-util -h
-usage: mrmat-repo-util [-h] {social-icons} ...
+$ mrmat-repo-util -h
+usage: mrmat-repo-util [-h] {social-github-icon,social-jetbrains-icon} ...
 
 mrmat-repo-util - 0.0.0.dev0
 
 positional arguments:
-  {social-icons}
-    social-icons  GitHub Social Icons
+  {social-github-icon,social-jetbrains-icon}
+    social-github-icon  Create a GitHub social icon
+    social-jetbrains-icon
+                        Create a Jetbrains social icon
 
 options:
-  -h, --help      show this help message and exit
-  
-$ mrmat-repo-util social-icons -h
-usage: mrmat-repo-util social-icons [-h] [-c {purple,red,orange,yellow,blue}] [--font-path FONT_PATH] [--font-family FONT_FAMILY] -t TITLE
-                                    --headline HEADLINE [-d DIRECTORY]
+  -h, --help            show this help message and exit
+```
+
+### social-github-icon
+
+The tool will a social icon you can upload to GitHub in PNG format at a size of 1280x640px. The icon features
+a title of a maximum of 13 characters on the top-left and a headline of a maximum of 4 characters on the bottom right.
+
+```shell
+$ mrmat-repo-util social-github-icon -h
+usage: mrmat-repo-util social-github-icon [-h] [-c {purple,red,orange,yellow,blue}] [--font-path FONT_PATH] -t TITLE --headline HEADLINE [-d DIRECTORY]
 
 options:
   -h, --help            show this help message and exit
@@ -46,31 +55,44 @@ options:
                         Background color
   --font-path FONT_PATH
                         Path to the font to use. Defaults to /System/Library/Fonts/HelveticaNeue.ttc
+  -t TITLE, --title TITLE
+                        Title on the top-left corner
+  --headline HEADLINE   Headline on the right
+  -d DIRECTORY, --directory DIRECTORY
+                        Directory to save the images to. Defaults to /Users/imfeldma/build
+
+$ mrmat-repo-util social-github-icon -c purple -t "RepoUtil" --headline RU
+Generated GitHub social icon at /Users/imfeldma/build/social-github.png
+```
+
+![GitHub Social Icon](var/images/social-github.png)
+
+# social-jetbrains-icon
+
+You can create a project icon for Jetbrains IDEs in SVG format. The icon has a 1024x1024 pixel size. The icon features
+a title of a maximum of 13 characters on the top-left and a headline of a maximum of 4 characters on the bottom right.
+
+```shell
+$ mrmat-repo-util social-jetbrains-icon -h
+usage: mrmat-repo-util social-jetbrains-icon [-h] [-c {purple,red,orange,yellow,blue}] [--font-family FONT_FAMILY] -t TITLE --headline HEADLINE [-d DIRECTORY]
+
+options:
+  -h, --help            show this help message and exit
+  -c {purple,red,orange,yellow,blue}, --colour {purple,red,orange,yellow,blue}
+                        Background color
   --font-family FONT_FAMILY
                         Font family to use. Defaults to Helvetica
   -t TITLE, --title TITLE
                         Title on the top-left corner
   --headline HEADLINE   Headline on the right
   -d DIRECTORY, --directory DIRECTORY
-                        Directory to save the images to. Defaults to /Users/YOU/build
+                        Directory to save the images to. Defaults to /Users/imfeldma/build
+
+$ mrmat-repo-util social-jetbrains-icon -c purple -t "RepoUtil" --headline RU
+Generated Project icon at /Users/imfeldma/build/social-jetbrains.svg
 ```
 
-### Generating social icons
-
-The tool will generate social icons you can upload to GitHub and use as a project icon for Jetbrains or in Gitlab.
-GitHub social icons generated in PNG format at a size of 1280x640px. IDEA icons are generated in SVG format at
-1024x1024px.
-
-```shell
-$ mrmat-repo-util --colour yellow --title "MrMat :: Repo Util" --headline "M:RU"
-Generated GitHub social icon at /Users/YOU/build/github-social.png
-Generated icon at /Users/YOU/build/idea-icon.svg
-```
-
-The resulting images look like this:
-
-![GitHub Social Icon](var/images/github-social.png)
-![IDEA/Gitlab Icon](var/images/idea-icon.svg)
+![IDEA/Gitlab Icon](var/images/social-jetbrains.svg)
 
 ## How to build this
 

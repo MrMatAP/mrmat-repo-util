@@ -53,13 +53,11 @@ def main() -> int:
                                          dest='title',
                                          type=str,
                                          required=True,
-                                         maxlen=MAX_TITLE_LENGTH,
                                          help='Title on the top-left corner')
   social_github_icon_parser.add_argument('--headline',
                                          dest='headline',
                                          type=str,
                                          required=True,
-                                         maxlen=MAX_HEADLINE_LENGTH,
                                          help='Headline on the right')
   social_github_icon_parser.add_argument('-d', '--directory',
                                          dest='directory',
@@ -88,13 +86,11 @@ def main() -> int:
                                             dest='title',
                                             type=str,
                                             required=True,
-                                            maxlen=MAX_TITLE_LENGTH,
                                             help='Title on the top-left corner')
   social_jetbrains_icon_parser.add_argument('--headline',
                                             dest='headline',
                                             type=str,
                                             required=True,
-                                            maxlen=MAX_HEADLINE_LENGTH,
                                             help='Headline on the right')
   social_jetbrains_icon_parser.add_argument('-d', '--directory',
                                             dest='directory',

@@ -2,10 +2,16 @@ import argparse
 
 from PIL import Image, ImageDraw, ImageFont
 
-from mru import console, palette
+from mru import console, palette, MAX_TITLE_LENGTH, MAX_HEADLINE_LENGTH
 
 
 def social_github_icon(args: argparse.Namespace):
+  if len(args.title) > MAX_TITLE_LENGTH:
+    console.print(f'ERROR: Your title exceeds the maximum title length of {MAX_TITLE_LENGTH} characters.')
+    return 1
+  if len(args.headline) > MAX_HEADLINE_LENGTH:
+    console.print(f'ERROR: Your headline exceeds the maximum title length of {MAX_HEADLINE_LENGTH} characters.')
+    return 1
   colour = palette[args.colour]
   if not args.font_path.exists():
     font = ImageFont.load_default(100)
@@ -29,9 +35,16 @@ def social_github_icon(args: argparse.Namespace):
   with open(github_social_icon_file, mode='wb') as f:
     out.save(f, format='PNG')
   console.print(f'Generated GitHub social icon at {github_social_icon_file}')
+  return 0
 
 
 def social_jetbrains_icon(args: argparse.Namespace):
+  if len(args.title) > MAX_TITLE_LENGTH:
+    console.print(f'ERROR: Your title exceeds the maximum title length of {MAX_TITLE_LENGTH} characters.')
+    return 1
+  if len(args.headline) > MAX_HEADLINE_LENGTH:
+    console.print(f'ERROR: Your headline exceeds the maximum title length of {MAX_HEADLINE_LENGTH} characters.')
+    return 1
   colour = palette[args.colour]
   svg_icon = f'''
   <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'
@@ -52,3 +65,4 @@ def social_jetbrains_icon(args: argparse.Namespace):
   project_icon_file = args.directory.joinpath('social-jetbrains.svg')
   project_icon_file.write_text(svg_icon, encoding='utf-8')
   console.print(f'Generated Project icon at {project_icon_file}')
+  return 0
